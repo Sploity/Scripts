@@ -1,0 +1,122 @@
+-- Gui to Lua
+-- Version: 3.1
+-- Discord server : https://discord.gg/DwWAgQB
+-- Instances:
+
+local ScreenGui = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local Type = Instance.new("TextBox")
+local Beauty = Instance.new("Frame")
+local Close = Instance.new("TextButton")
+local Teleport = Instance.new("TextButton")
+local Credits = Instance.new("Frame")
+local CreditsLabel = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+ScreenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = ScreenGui
+Main.BackgroundColor3 = Color3.fromRGB(52, 52, 52)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.0531520396, 0, 0.25298804, 0)
+Main.Size = UDim2.new(0, 293, 0, 213)
+Main.Active = true
+Main.Draggable = true
+
+Type.Name = "Type"
+Type.Parent = Main
+Type.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Type.Position = UDim2.new(0.156996489, 0, 0.464788735, 0)
+Type.Size = UDim2.new(0, 200, 0, 50)
+Type.Font = Enum.Font.SourceSans
+Type.Text = ""
+Type.TextColor3 = Color3.fromRGB(0, 0, 0)
+Type.TextSize = 14.000
+
+Beauty.Name = "Beauty"
+Beauty.Parent = Main
+Beauty.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Beauty.Position = UDim2.new(0, 0, -0.00469483575, 0)
+Beauty.Size = UDim2.new(0, 293, 0, 19)
+
+Close.Name = "Close"
+Close.Parent = Beauty
+Close.BackgroundColor3 = Color3.fromRGB(255, 0, 0)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.918088734, 0, 0, 0)
+Close.Size = UDim2.new(0, 24, 0, 19)
+Close.Font = Enum.Font.GothamBold
+Close.Text = "X"
+Close.TextColor3 = Color3.fromRGB(0, 0, 0)
+Close.TextSize = 14.000
+Close.MouseButton1Down:Connect(function()
+	Main.Visible = false
+end)
+
+Teleport.Name = "Teleport"
+Teleport.Parent = Main
+Teleport.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Teleport.BorderSizePixel = 0
+Teleport.Position = UDim2.new(0.153583616, 0, 0.765258193, 0)
+Teleport.Size = UDim2.new(0, 200, 0, 25)
+Teleport.Font = Enum.Font.SciFi
+Teleport.Text = "Teleport"
+Teleport.TextColor3 = Color3.fromRGB(255, 255, 255)
+Teleport.TextSize = 14.000
+Teleport.MouseButton1Click:Connect(function()
+    for i, v in pairs(game.Players:GetChildren()) do 
+        target = game.CoreGui.ScreenGui.Main.Type.Text
+        if v.Name:lower() == target:lower() then
+			v.Name = target
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v.Character.HumanoidRootPart.CFrame
+        end
+    end
+end)
+
+Credits.Name = "Credits"
+Credits.Parent = Main
+Credits.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Credits.Position = UDim2.new(0.0443686023, 0, 0.136150241, 0)
+Credits.Size = UDim2.new(0, 268, 0, 58)
+
+CreditsLabel.Name = "CreditsLabel"
+CreditsLabel.Parent = Credits
+CreditsLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+CreditsLabel.BackgroundTransparency = 1.000
+CreditsLabel.Size = UDim2.new(0, 268, 0, 58)
+CreditsLabel.Font = Enum.Font.SciFi
+CreditsLabel.Text = "Better Teleport GUI , Made By Sploity#8682"
+CreditsLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+CreditsLabel.TextSize = 14.000
+CreditsLabel.TextTransparency = -1.000
+CreditsLabel.TextWrapped = true
+
+-- Scripts:
+
+local function KFSP_fake_script() -- Beauty.RgbScript 
+	local script = Instance.new('LocalScript', Beauty)
+
+	function zigzag(X) return math.acos(math.cos(X*math.pi))/math.pi end
+	counter = 0
+	while wait(0.3) do
+		script.Parent.BackgroundColor3 = Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.01
+	end
+	
+end
+coroutine.wrap(KFSP_fake_script)()
+local function FUMRURH_fake_script() -- Teleport.RgbScript 
+	local script = Instance.new('LocalScript', Teleport)
+
+	function zigzag(X) return math.acos(math.cos(X*math.pi))/math.pi end
+	counter = 0
+	while wait(0.3) do
+		script.Parent.BackgroundColor3 = Color3.fromHSV(zigzag(counter),1,1)
+		counter = counter + 0.01
+	end
+	
+end
+coroutine.wrap(FUMRURH_fake_script)()
